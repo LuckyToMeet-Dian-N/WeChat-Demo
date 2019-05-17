@@ -1,0 +1,6 @@
+wx:
+  pay:
+    appId: #微信公众号或者小程序等的appid
+    mchId: #微信支付商户号
+    mchKey: #微信支付商户密钥
+    keyPath: # p12证书的位置，可以指定绝对路径，也可以指定类路径（以classpath:开头）

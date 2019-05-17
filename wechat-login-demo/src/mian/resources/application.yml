@@ -1,0 +1,4 @@
+wechat:
+  open:
+    componentAppId: ""
+    componentSecret: ""
