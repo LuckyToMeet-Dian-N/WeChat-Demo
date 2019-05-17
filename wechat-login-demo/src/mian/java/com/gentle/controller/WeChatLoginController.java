@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author : Gentle
@@ -42,7 +41,6 @@ public class WeChatLoginController {
      * @return
      */
     @GetMapping(value = "apiTest")
-    @ResponseBody
     public String redirectToIndexPage(@RequestParam("code") String code) {
 
         //请求微信，拿到微信信息
@@ -63,6 +61,7 @@ public class WeChatLoginController {
             e.printStackTrace();
 
         }
+        //这里可以做重定向到某个页面，懒得做页面就算了。
         return "请求成功！";
     }
 
