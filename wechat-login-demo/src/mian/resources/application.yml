@@ -1,4 +1,3 @@
-wechat:
-  open:
-    componentAppId: ""
-    componentSecret: ""
+weChat:
+    mpAppId: "微信 appId"
+    mpAppSecret: "微信秘钥"

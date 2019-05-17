@@ -24,12 +24,12 @@ public class WeChatLoginController {
     private WxMpService wxMpService;
 
     /**
-     *
+     * 微信授权入口，请求该接口
      * @return
      */
     @GetMapping(value = "weChatLogin")
     public String weChatRedirect() {
-        String url = "http://test/api/client/apiTest";
+        String url = "http://修改成自己的域名/api/client/apiTest";
         String redirectURL = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_USER_INFO, null);
 
         return "redirect:" + redirectURL;
@@ -37,14 +37,14 @@ public class WeChatLoginController {
 
     /**
      * 微信重定向回来，并携带 code　参数
-     * @param code
+     *
+     * @param code 微信返回的 code
      * @return
      */
     @GetMapping(value = "apiTest")
     @ResponseBody
     public String redirectToIndexPage(@RequestParam("code") String code) {
-        //返回需要跳转的页面锚点
-        String jwt = null;
+
         //请求微信，拿到微信信息
         try {
             //根据 code 换取 accessToken
@@ -53,17 +53,16 @@ public class WeChatLoginController {
              * 这里处理内部业务，如判断数据库中是否已经有该用户了
              */
             //换取用户信息
-            WxMpUser wxMpUser = wxMpService.oauth2getUserInfo(wxMpOAuth2AccessToken,null);
+            WxMpUser wxMpUser = wxMpService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
 
             /**
              * 消息入库等等之类的代码
              */
-            System.out.println("得到授权的个人信息 ："+wxMpUser);
+            System.out.println("得到授权的个人信息 ：" + wxMpUser);
         } catch (WxErrorException e) {
             e.printStackTrace();
 
         }
-
         return "请求成功！";
     }
 

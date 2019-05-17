@@ -1,5 +1,6 @@
 package cn.sise.common.config;
 
+import com.gentle.config.WeChatPayProperties;
 import com.github.binarywang.wxpay.config.WxPayConfig;
 import com.github.binarywang.wxpay.service.WxPayService;
 import com.github.binarywang.wxpay.service.impl.WxPayServiceImpl;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class WechatPayConfig {
     @Autowired
-    private cn.sise.common.config.WeChatPayProperties properties;
+    private WeChatPayProperties properties;
 
     @Bean
     @ConditionalOnMissingBean

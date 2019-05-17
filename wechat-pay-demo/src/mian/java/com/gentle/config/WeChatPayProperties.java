@@ -1,4 +1,4 @@
-package cn.sise.common.config;
+package com.gentle.config;
 
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "wechat.pay")
+@ConfigurationProperties(prefix = "wx.pay")
 public class WeChatPayProperties {
 
     private String appId;
