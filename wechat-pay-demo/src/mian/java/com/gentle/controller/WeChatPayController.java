@@ -54,14 +54,15 @@ public class WeChatPayController {
                 .body("订单信息")
                 //获取本地IP
                 .spbillCreateIp(InetAddress.getLoopbackAddress().getHostAddress())
-
-                .notifyUrl("回调的 url 地址")
+                //回调的 URL 地址
+                .notifyUrl("http://我们的域名/api/client/pay/weChatPayNotify")
                 .build();
         WxPayUnifiedOrderResult wxPayUnifiedOrderResult =null;
         try {
             wxPayUnifiedOrderResult = wxPayService.unifiedOrder(wxPayUnifiedOrderRequest);
         } catch (WxPayException e) {
             e.printStackTrace();
+            throw new RuntimeException("微信支付调起失败！");
         }
         //组合参数构建支付
         Map<String, String> paySignInfo = new HashMap<>(5);
@@ -88,7 +89,7 @@ public class WeChatPayController {
 
     /**
      *
-     * @param xmlData
+     * @param xmlData 微信返回的流
      * @return
      */
     @RequestMapping(value = "weChatPayNotify",method = {RequestMethod.GET,RequestMethod.POST})
@@ -107,7 +108,6 @@ public class WeChatPayController {
             e.printStackTrace();
             return WxPayNotifyResponse.fail("回调有误!");
         }
-
     }
 
     /**

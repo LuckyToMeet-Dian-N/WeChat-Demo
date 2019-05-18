@@ -1,6 +1,5 @@
-package cn.sise.common.config;
+package com.gentle.config;
 
-import com.gentle.config.WeChatPayProperties;
 import com.github.binarywang.wxpay.config.WxPayConfig;
 import com.github.binarywang.wxpay.service.WxPayService;
 import com.github.binarywang.wxpay.service.impl.WxPayServiceImpl;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Component;
  * 微信支付信息注入bean 中
  */
 @Component
-public class WechatPayConfig {
+public class WeChatPayConfig {
     @Autowired
     private WeChatPayProperties properties;
 
@@ -28,7 +27,6 @@ public class WechatPayConfig {
         payConfig.setMchKey(this.properties.getMchKey());
         payConfig.setKeyPath(this.properties.getKeyPath());
         payConfig.setTradeType(this.properties.getTradeType());
-        payConfig.setNotifyUrl(this.properties.getNotifyUrl());
         return payConfig;
     }
 
